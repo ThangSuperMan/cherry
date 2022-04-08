@@ -4,6 +4,11 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/cherryramatisdev/cherry/git"
+	"github.com/cherryramatisdev/cherry/install"
+	"github.com/cherryramatisdev/cherry/monitor"
+	"github.com/cherryramatisdev/cherry/tmux"
+	"github.com/cherryramatisdev/cherry/twitch"
 	Z "github.com/rwxrob/bonzai/z"
 )
 
@@ -33,5 +38,9 @@ var Cmd = &Z.Cmd{
 	},
 	Commands: []*Z.Cmd{
 		tmux.Cmd,
+		git.Cmd,
+		twitch.Cmd,
+		monitor.Cmd,
+		install.Cmd,
 	},
 }
