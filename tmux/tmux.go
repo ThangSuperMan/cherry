@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	Z "github.com/rwxrob/bonzai/z"
+	"github.com/rwxrob/help"
 )
 
 var Cmd = &Z.Cmd{
@@ -15,6 +16,7 @@ var Cmd = &Z.Cmd{
   - Another tips and tricks
   `,
 	Commands: []*Z.Cmd{
+		help.Cmd,
 		foo,
 		bar,
 	},

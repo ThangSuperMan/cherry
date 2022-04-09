@@ -9,13 +9,14 @@ import (
 
 	Z "github.com/rwxrob/bonzai/z"
 	"github.com/rwxrob/fs/file"
+	"github.com/rwxrob/help"
 )
 
 var Cmd = &Z.Cmd{
 	Name:     `git`,
 	Summary:  `git command tree`,
 	Aliases:  []string{"g"},
-	Commands: []*Z.Cmd{push},
+	Commands: []*Z.Cmd{help.Cmd, push},
 }
 
 var push = &Z.Cmd{
