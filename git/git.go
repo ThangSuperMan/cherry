@@ -2,6 +2,7 @@ package git
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -30,7 +31,9 @@ var push = &Z.Cmd{
 			verifyJavascriptProject()
 		}
 
-		return Z.Exec("git", "commit", "--no-verify")
+		branch := currentBranch()
+
+		return Z.Exec("git", "push", "origin", branch)
 	},
 }
 
@@ -53,4 +56,22 @@ func runShell(name string, args ...string) {
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
 	}
+}
+
+func currentBranch() string {
+	cmd := exec.Command("git", "rev-parse", "--abbrev-ref", "HEAD")
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		log.Panic(err)
+	}
+
+	// Execute the command
+	if err := cmd.Start(); err != nil {
+		log.Panic(err)
+	}
+
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(stdout)
+
+	return buf.String()
 }
