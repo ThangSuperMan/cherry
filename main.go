@@ -14,6 +14,11 @@ import (
 
 func main() {
 	log.SetFlags(0)
+
+	Z.Aliases = map[string][]string{
+		"ps": {"git", "push"},
+	}
+
 	Cmd.Run()
 }
 
