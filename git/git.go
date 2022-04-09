@@ -29,7 +29,6 @@ var push = &Z.Cmd{
 			verifyJavascriptProject()
 		}
 
-		fmt.Print("\033[H\033[2J")
 		return Z.Exec("git", "commit", "--no-verify")
 	},
 }
@@ -38,6 +37,7 @@ func verifyJavascriptProject() {
 	runShell("yarn", "build")
 	runShell("yarn", "lint")
 	runShell("yarn", "test")
+	fmt.Print("\033[H\033[2J")
 }
 
 func runShell(name string, args ...string) {
