@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 
 	Z "github.com/rwxrob/bonzai/z"
 	"github.com/rwxrob/fs/file"
@@ -33,6 +34,7 @@ var push = &Z.Cmd{
 
 		branch := currentBranch()
 
+		fmt.Printf("git push origin %s", branch)
 		return Z.Exec("git", "push", "origin", branch)
 	},
 }
@@ -73,5 +75,5 @@ func currentBranch() string {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(stdout)
 
-	return buf.String()
+	return strings.Trim(buf.String(), " ")
 }
