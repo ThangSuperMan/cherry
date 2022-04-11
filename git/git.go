@@ -32,10 +32,7 @@ var push = &Z.Cmd{
 			verifyJavascriptProject()
 		}
 
-		branch := currentBranch()
-
-		fmt.Printf("git push origin %s", branch)
-		return Z.Exec("git", "push", "origin", branch)
+		return Z.Exec("git", "push", "origin", currentBranch())
 	},
 }
 
