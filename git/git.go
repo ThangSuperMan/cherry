@@ -75,5 +75,5 @@ func currentBranch() string {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(stdout)
 
-	return strings.Trim(buf.String(), " ")
+	return strings.Replace(buf.String(), "\n", "", -1)
 }
